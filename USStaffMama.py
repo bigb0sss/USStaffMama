@@ -10,12 +10,8 @@ class color:
 import sys
 import re
 import requests
-import subprocess
 import json
 import argparse, textwrap
-import os
-import urllib
-import string
 import configparser
 from bs4 import BeautifulSoup
 
@@ -59,7 +55,7 @@ def banner():
 def search(company, email, prefix):
     csv = []
 
-    url = "https://bearsofficialsstore.com/company/%s" % company
+    url = "https://bearsofficialsstore.com/company/%s/page1" % company
     
     r = requests.get(url)
 
@@ -80,9 +76,10 @@ def search(company, email, prefix):
     else:
         lastPage = match.group()[4:]
         lastPage = int(lastPage)
+        lastPageNum = lastPage + 1 # you know what python does for numbering
         print("[INFO] Total Pages: %s" % lastPage) 
 
-    for page in range(1, lastPage):
+    for page in range(1, lastPageNum):
                
         url = "https://bearsofficialsstore.com/company/%s/page%s" % (company, page)
         print("[INFO] Fetching usernames: %s" % url)
