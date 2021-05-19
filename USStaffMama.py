@@ -73,6 +73,8 @@ def search(company, email, prefix):
 
     if match == None:
         lastPage = 1
+        lastPageNum = 2
+        print("[INFO] Total Pages: %s" % lastPage) 
     else:
         lastPage = match.group()[4:]
         lastPage = int(lastPage)
