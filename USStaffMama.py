@@ -47,6 +47,17 @@ def error():
     print("[ERROR] Something went wrong!")
     sys.exit()
 
+def banner():
+    print
+    print("   __  ____________ __        __________  ___                       ")
+    print("  / / / / ___/ ___// /_____ _/ __/ __/  |/  /___ _____ ___  ____ _  ")
+    print(" / / / /\__ \\\\__ \/ __/ __ `/ /_/ /_/ /|_/ / __ `/ __ `__ \/ __ `/  ")
+    print("/ /_/ /___/ /__/ / /_/ /_/ / __/ __/ /  / / /_/ / / / / / / /_/ /   ")
+    print("\____//____/____/\__/\__,_/_/ /_/ /_/  /_/\__,_/_/ /_/ /_/\__,_/    ")
+    print("                                                 [bigb0ss]          ")
+    print                                                                  
+    print
+
 # US Staff Search
 def search(company, email, prefix):
     csv = []
@@ -72,7 +83,7 @@ def search(company, email, prefix):
     else:
         lastPage = match.group()[4:]
         lastPage = int(lastPage)
-        print("[INFO] Last Page: %s" % lastPage) 
+        print("[INFO] Total Page: %s" % lastPage) 
 
     for page in range(lastPage):
                
@@ -161,6 +172,7 @@ def search(company, email, prefix):
             f.close()
 
 if __name__ == '__main__':
+    banner()
 
     company = args.company
     company = company.lower()
@@ -179,6 +191,11 @@ if __name__ == '__main__':
         print("[INFO] Hunter.io search...")
         url_hunter = "https://api.hunter.io/v2/domain-search?domain=%s&api_key=%s" % (email, api_key)
         r = requests.get(url_hunter)
+
+        if r.status_code != 200:
+            print("[ERROR] Something is wrong accessing Hunter.io")
+            sys.exit()
+
         content = json.loads(r.text)
         prefix = content['data']['pattern']
         print("[INFO] %s" % prefix)
