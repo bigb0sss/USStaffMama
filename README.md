@@ -1,5 +1,5 @@
 # USStaffMama
-USStaffMama is a web scrapper for [US Staff](https://bearsofficialsstore.com) where it aggregates open source resources for US employee data, such as names, job title, locations, etc. This will help red teamers/pentester for generating a list of usernames for further password guessing or phishing attacks. And a great thing about this website is that it doesn't require login/authentication for accessing all its data :)
+USStaffMama is a web scraper for [US Staff](https://bearsofficialsstore.com) where it aggregates open source resources for US employee data, such as names, job title, locations, etc. This will help red teamers/pentester for generating a list of usernames for further password guessing or phishing attacks. And a great thing about this website is that it doesn't require login/authentication for accessing all its data :)
 
 
 ## Installation
